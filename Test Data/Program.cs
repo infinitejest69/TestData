@@ -9,7 +9,7 @@ Randomizer.Seed = new Random(123456);
 var randomAddress = new Faker<Test_Data.Address>("en_GB")
     .RuleFor(x => x.City, x => x.Address.City())
     .RuleFor(x => x.HouseNumber, x => x.Address.BuildingNumber())
-    .RuleFor(x => x.PostCode, x => x.Address.ZipCode("KY## #AW"))
+    .RuleFor(x => x.PostCode, x => x.Address.ZipCode("#### ###"))
     .RuleFor(x => x.Country, x => x.Address.CountryOfUnitedKingdom())
     .RuleFor(x => x.StreetName, x => x.Address.StreetName());
 
