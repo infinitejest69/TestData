@@ -32,7 +32,7 @@ var RandoPerson = new Faker<Test_Data.Person>("en_GB")
 var Html = new Faker<Test_Data.HtmlObject>("en_GB")
     .RuleFor(x => x.Html, x => x.Lorem.Sentences());
 
-var users = RandoPerson.Generate(2);
+var users = RandoPerson.Generate(10);
 var MyP = Html.Generate();
 Console.WriteLine($"<p>{MyP.Html}</p>");
 Console.WriteLine("########");
