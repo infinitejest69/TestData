@@ -23,9 +23,17 @@ var RandoPerson = new Faker<Test_Data.Person>("en_GB")
     .RuleFor(x => x.Gender, x => x.Person.Gender.ToString())
     .RuleFor(x => x.NI, x => x.Finance.Nino())
     .RuleFor(x => x.Address, x => randomAddress.Generate())
+    .RuleFor(x => x.Password, x => x.Internet.Password())
+    .RuleFor(x => x.UserName, x => x.Internet.UserName())
     .RuleFor(x => x.MobilePhone, x => x.Phone.PhoneNumber("07#########"))
+    .RuleFor(x => x.Photo, x => x.Image.PlaceImgUrl(category: Bogus.DataSets.PlaceImgCategory.People))
     .RuleFor(x => x.Id, x => x.Random.Guid());
 
-var users = RandoPerson.Generate(2);
+var Html = new Faker<Test_Data.HtmlObject>("en_GB")
+    .RuleFor(x => x.Html, x => x.Lorem.Sentences());
 
+var users = RandoPerson.Generate(2);
+var MyP = Html.Generate();
+Console.WriteLine($"<p>{MyP.Html}</p>");
+Console.WriteLine("########");
 Console.WriteLine(JsonSerializer.Serialize(users, new JsonSerializerOptions() { WriteIndented = true }));

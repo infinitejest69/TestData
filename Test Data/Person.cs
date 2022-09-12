@@ -9,6 +9,11 @@
         public string StreetName { get; set; }
     }
 
+    public class HtmlObject
+    {
+        public string Html { get; set; }
+    }
+
     public class Person
     {
         public Address Address { get; set; }
@@ -25,6 +30,9 @@
         public string LastName { get; set; }
         public string MobilePhone { get; set; }
         public string NI { get; set; }
+        public string Password { get; set; }
+        public string Photo { get; set; }
         public string Title { get; set; }
+        public string UserName { get; set; }
     }
 }
