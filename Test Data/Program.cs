@@ -3,7 +3,7 @@ using Bogus;
 using Bogus.Extensions.UnitedKingdom;
 using System.Text.Json;
 
-//Randomizer.Seed = new Random(8675309);
+Randomizer.Seed = new Random(123456);
 
 //TODO Makes Addresses more UK based
 var randomAddress = new Faker<Test_Data.Address>("en_GB")
@@ -24,8 +24,8 @@ var RandoPerson = new Faker<Test_Data.Person>("en_GB")
     .RuleFor(x => x.NI, x => x.Finance.Nino())
     .RuleFor(x => x.Address, x => randomAddress.Generate())
     .RuleFor(x => x.MobilePhone, x => x.Phone.PhoneNumber("07#########"))
-    .RuleFor(x => x.Id, x => Guid.NewGuid());
+    .RuleFor(x => x.Id, x => x.Random.Guid());
 
-var users = RandoPerson.Generate(12);
+var users = RandoPerson.Generate(2);
 
 Console.WriteLine(JsonSerializer.Serialize(users, new JsonSerializerOptions() { WriteIndented = true }));
